@@ -70,6 +70,7 @@ public partial class ListaProduto : ContentPage
         DisplayAlert("Total dos Produtos", msg, "OK");
     }
 
+    //função de remover produto quando selecionado
     private async void MenuItem_Clicked(object sender, EventArgs e)
     {
         try
@@ -93,6 +94,7 @@ public partial class ListaProduto : ContentPage
         }
     }
 
+    // função de editar produto quando selecionado
     private void lst_produtos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
         try
