@@ -18,12 +18,28 @@
 		</ResourceDictionary>
 	</ContentPage.Resources>
 
-	<StackLayout>
+    
+
+    <StackLayout>
 		<SearchBar x:Name="txt_search"
-                   Margin="-15, 0, 0, 0"		
+                   Margin="20, 0, 0, 0"		
                    Placeholder="Busca de Produtos"
                    TextChanged="txt_search_TextChanged"/>
-		<Frame Padding="0" Margin="10" VerticalOptions="FillAndExpand">
+        <Picker x:Name="categoriaPicker" SelectedIndexChanged="categoriaPicker_SelectedIndexChanged">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Todos</x:String>
+                    <x:String>Alimentos</x:String>
+                    <x:String>Higiene/Saúde</x:String>
+                    <x:String>Eletronicos</x:String>
+                    <x:String>Moda</x:String>
+                    <x:String>Construção/Casa</x:String>
+                    <x:String>Diversos</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Frame Padding="0" Margin="10" VerticalOptions="FillAndExpand">
 			<ListView x:Name="lst_produtos"
                   IsPullToRefreshEnabled="True"
                   Refreshing="lst_produtos_Refreshing"
@@ -61,5 +77,7 @@
 		</Frame>		
 	</StackLayout>
 </ContentPage>
+
+
 
 
