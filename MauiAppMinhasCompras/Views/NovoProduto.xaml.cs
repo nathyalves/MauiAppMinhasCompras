@@ -9,25 +9,30 @@ public partial class NovoProduto : ContentPage
         InitializeComponent();
     }
 
-    private async void ToolbarItem_Clicked(object sender, EventArgs e)
+    private async void OnSalvarClicked(object sender, EventArgs e)
     {
         try
         {
-            Produto p = new Produto
+            string descricao = descricaoEntry.Text;
+            double quantidade = double.Parse(quantidadeEntry.Text);
+            double preco = double.Parse(precoEntry.Text);
+            string categoria = categoriaPicker.SelectedItem.ToString();
+
+            Produto novoProduto = new Produto
             {
-                Descricao = txt_descricao.Text,
-                Quantidade = Convert.ToDouble(txt_quantidade.Text),
-                Preco = Convert.ToDouble(txt_preco.Text)
+                Descricao = descricao,
+                Quantidade = quantidade,
+                Preco = preco,
+                Categoria = categoria
             };
 
-            await App.Db.Insert(p);
-            await DisplayAlert("Sucesso!", "Registro Inserido", "OK");
+            await App.Db.Insert(novoProduto);
+            await DisplayAlert("Sucesso", "Produto adicionado com sucesso!", "OK");
             await Navigation.PopAsync();
-
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Ops", ex.Message, "OK");
+            await DisplayAlert("Erro", ex.Message, "OK");
         }
     }
 }
