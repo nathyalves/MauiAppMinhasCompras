@@ -1,4 +1,6 @@
-﻿using MauiAppMinhasCompras.Helpers;
+using MauiAppMinhasCompras.Helpers;
+using MauiAppMinhasCompras.Models;
+using MauiAppMinhasCompras.Services;
 using System.Globalization;
 
 namespace MauiAppMinhasCompras
@@ -33,6 +35,10 @@ namespace MauiAppMinhasCompras
 
             //MainPage = new AppShell();
             MainPage = new NavigationPage(new Views.ListaProduto());
+
+            // Chamar o método de teste aqui
+            RelatorioService.TestarRelatorio();
         }
     }
 }
+
