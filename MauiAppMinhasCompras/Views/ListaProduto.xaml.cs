@@ -98,6 +98,23 @@ public partial class ListaProduto : ContentPage
         }
     }
 
+    private void lst_produtos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        try
+        {
+            Produto p = e.SelectedItem as Produto;
+
+            Navigation.PushAsync(new Views.EditarProduto
+            {
+                BindingContext = p,
+            });
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("Ops", ex.Message, "OK");
+        }
+    }
+
     private async void lst_produtos_Refreshing(object sender, EventArgs e)
     {
         try
@@ -124,4 +141,6 @@ public partial class ListaProduto : ContentPage
         await Navigation.PushAsync(new RelatorioPage());
     }
 }
+
+
 
