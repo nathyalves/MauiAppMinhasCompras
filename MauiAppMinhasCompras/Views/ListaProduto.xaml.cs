@@ -1,4 +1,4 @@
-﻿using MauiAppMinhasCompras.Models;
+using MauiAppMinhasCompras.Models;
 using System.Collections.ObjectModel;
 
 namespace MauiAppMinhasCompras.Views;
@@ -35,7 +35,6 @@ public partial class ListaProduto : ContentPage
         try
         {
             Navigation.PushAsync(new Views.NovoProduto());
-
         }
         catch (Exception ex)
         {
@@ -99,23 +98,6 @@ public partial class ListaProduto : ContentPage
         }
     }
 
-    private void lst_produtos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-    {
-        try
-        {
-            Produto p = e.SelectedItem as Produto;
-
-            Navigation.PushAsync(new Views.EditarProduto
-            {
-                BindingContext = p,
-            });
-        }
-        catch (Exception ex)
-        {
-            DisplayAlert("Ops", ex.Message, "OK");
-        }
-    }
-
     private async void lst_produtos_Refreshing(object sender, EventArgs e)
     {
         try
@@ -136,4 +118,10 @@ public partial class ListaProduto : ContentPage
             lst_produtos.IsRefreshing = false;
         }
     }
+
+    private async void OnVerRelatorioClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new RelatorioPage());
+    }
 }
+
